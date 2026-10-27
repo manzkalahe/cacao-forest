@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plant Cacao, Grow Forest</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(180deg, #2c5f2d 0%, #40916c 40%, #74c69d 70%, #d8f3dc 100%);
+            min-height: 100vh;
+            color: #1b4332;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(27, 67, 50, 0.9);
+            padding: 15px 40px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: white;
+            font-size: 22px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .nav-links a {
+            color: #d8f3dc;
+            text-decoration: none;
+            margin-left: 25px;
+            font-size: 15px;
+        }
+
+        .nav-links a:hover {
+            color: #95d5b2;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 150px 20px 100px;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            color: white;
+            margin-bottom: 20px;
+            text-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: #e8f5e9;
+            margin-bottom: 35px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 38px;
+            background: #bc6c25;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(139, 90, 43, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            background: #a55e20;
+        }
+
+        /* Sections */
+        section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 34px;
+            color: white;
+            margin-bottom: 45px;
+        }
+
+        .content-box {
+            background: rgba(255, 255, 255, 0.92);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(27, 67, 50, 0.15);
+            margin-bottom: 30px;
+        }
+
+        .content-box h2 {
+            color: #2c5f2d;
+            margin-bottom: 20px;
+            font-size: 26px;
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.92);
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 5px 20px rgba(27, 67, 50, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+        }
+
+        .card-icon {
+            font-size: 44px;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            color: #2c5f2d;
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+
+        /* Steps */
+        .step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+            gap: 20px;
+        }
+
+        .step-number {
+            background: #bc6c25;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        /* Contact Form */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #1b4332;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #95d5b2;
+            border-radius: 8px;
+            font-size: 15px;
+            background: #f8fef9;
+        }
+
+        button[type="submit"] {
+            background: #2c5f2d;
+            color: white;
+            border: none;
+            padding: 12px 35px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background: #245026;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(27, 67, 50, 0.95);
+            color: #d8f3dc;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 40px;
+        }
+
+        footer p {
+            margin-bottom: 8px;
+        }
+
+        /* Floating Leaves Animation */
+        .leaves {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .leaf {
+            position: absolute;
+            font-size: 22px;
+            opacity: 0.35;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-40px) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.35; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 32px; }
+            .nav-links a { margin-left: 12px; font-size: 14px; }
+            .content-box { padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Floating Leaves -->
+    <div class="leaves">
+        <span class="leaf" style="left:8%; animation-duration:14s;">🍃</span>
+        <span class="leaf" style="left:22%; animation-duration:18s; animation-delay:2s;">🌿</span>
+        <span class="leaf" style="left:38%; animation-duration:16s; animation-delay:1s;">🍃</span>
+        <span class="leaf" style="left:54%; animation-duration:20s;">🌿</span>
+        <span class="leaf" style="left:72%; animation-duration:15s; animation-delay:3s;">🍃</span>
+        <span class="leaf" style="left:88%; animation-duration:17s; animation-delay:0.5s;">🌿</span>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">🌳 CacaoForest</a>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#why">Why Cacao?</a>
+                <a href="#how">How It Works</a>
+                <a href="#impact">Our Impact</a>
+                <a href="#join">Get Involved</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h1>🌱 Plant Cacao, Grow a Forest</h1>
+        <p>Restore our forests, support local farmers, and grow a sustainable future — one cacao seed at a time.</p>
+        <a href="#why" class="btn">Learn More 🍫</a>
+    </section>
+
+    <!-- Why Cacao Section -->
+    <section id="why">
+        <h2 class="section-title">Why Plant Cacao? 🍫🌲</h2>
+        <div class="content-box">
+            <h2>🌍 Cacao Helps Save the Forest</h2>
+            <p>Cacao trees grow best under the shade of taller trees. This means when we plant cacao, we don't cut down the forest — we actually protect it! Cacao agroforestry is a method of growing cacao alongside other trees, creating a diverse ecosystem that benefits both people and nature.</p>
+            <br>
+            <p>By growing cacao, farmers can earn a living without destroying the forest. The cacao trees provide fruit and income, while the surrounding trees continue to produce oxygen, protect wildlife, and keep our soil healthy.</p>
+        </div>
+
+        <div class="cards-grid" style="margin-top:40px;">
+            <div class="card">
+                <div class="card-icon">🌳</div>
+                <h3>Protects Trees</h3>
+                <p>Cacao grows in shade — so we keep our existing forests standing while still producing food and income.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">💰</div>
+                <h3>Supports Farmers</h3>
+                <p>Farmers earn steady income from cacao beans, making forest protection profitable for local communities.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🦜</div>
+                <h3>Helps Wildlife</h3>
+                <p>Shade-grown cacao preserves habitats for birds, insects, and forest animals that would otherwise lose their homes.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🌤️</div>
+                <h3>Fights Climate Change</h3>
+                <p>More trees mean more carbon is absorbed from the air — helping cool our planet naturally.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how">
+        <h2 class="section-title">How It Works 📋</h2>
+        <div class="content-box">
+            <h2>🌱 From Seed to Harvest</h2>
+            
+            <div class="step">
+                <div class="step-number">1</div>
+                <div>
+                    <h3>Choose the Right Location</h3>
+                    <p>Select land that was previously cleared but still has some trees. Cacao needs shade, warm temperatures, and well-drained soil.</p>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">2</div>
+                <div>
+                    <h3>Prepare the Seeds</h3>
+                    <p>Choose healthy, ripe cacao pods. Extract the beans, clean them, and let them dry slightly before planting.</p>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">3</div>
+                <div>
+                    <h3>Plant with Care</h3>
+                    <p>Plant seeds or seedlings under the shade of larger trees. Space them properly so each tree has room to grow without competing for sunlight.</p>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">4</div>
+                <div>
+                    <h3>Nurture & Grow</h3>
+                    <p>Water young trees regularly. Add organic compost to keep the soil healthy. Keep the area free of weeds but don't remove the shade trees!</p>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">5</div>
+                <div>
+                    <h3>Harvest & Share</h3>
+                    <p>In 3–5 years, harvest your first cacao pods! Sell the beans or make chocolate. Use the income to plant even more trees!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section id="impact">
+        <h2 class="section-title">Our Impact 🌏</h2>
+        <div class="cards-grid">
+            <div class="card" style="text-align:center;">
+                <div class="card-icon">🌳</div>
+                <h3 style="font-size:36px;">50,000+</h3>
+                <p>Trees planted since we started</p>
+            </div>
+            <div class="card" style="text-align:center;">
+                <div class="card-icon">👨‍🌾</div>
+                <h3 style="font-size:36px;">250+</h3>
+                <p>Families supported with cacao farming</p>
+            </div>
+            <div class="card" style="text-align:center;">
+                <div class="card-icon">🏞️</div>
+                <h3 style="font-size:36px;">1,200 ha</h3>
+                <p>Forest protected from deforestation</p>
+            </div>
+            <div class="card" style="text-align:center;">
+                <div class="card-icon">🦋</div>
+                <h3 style="font-size:36px;">80+</h3>
+                <p>Wildlife species returned to our forests</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Get Involved Section -->
+    <section id="join">
+        <h2 class="section-title">Get Involved 🤝</h2>
+        <div class="content-box">
+            <h2>📬 Join Our Movement</h2>
+            <p>Want to help plant cacao and protect our forests? Get in touch with us or donate to support our farmers and tree-planting projects!</p>
+            <br>
+            <form>
+                <div class="form-group">
+                    <label for="name">Your Full Name</label>
+                    <input type="text" id="name" placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="your@email.com">
+                </div>
+                <div class="form-group">
+                    <label for="interest">How would you like to help?</label>
+                    <input type="text" id="interest" placeholder="e.g., Volunteer, Donate, Learn more...">
+                </div>
+                <div class="form-group">
+                    <label for="message">Your Message</label>
+                    <textarea id="message" rows="4" placeholder="Tell us about yourself or ask us anything..."></textarea>
+                </div>
+                <button type="submit">Send Message 🌿</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <h3 style="font-size:22px; margin-bottom:15px;">🌳 Plant Cacao, Grow Forest</h3>
+        <p>Restoring nature, supporting communities — one seed at a time.</p>
+        <p>📍 Palanan, Isabela, Philippines | 📧 hello@cacaoforest.ph | 📞 +63 917 123 4567</p>
+        <p style="margin-top:20px; opacity:0.6;">&copy; 2026 CacaoForest. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
+manzplata
